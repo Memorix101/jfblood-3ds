@@ -1,11 +1,11 @@
 [submodule "jfbuild"]
 	path = jfbuild
-	url = ../jfbuild
-	branch = 3DS_blood
+	url = https://github.com/Memorix101/jfbuild.git
+	branch = 3DS_blood_fixes
 [submodule "jfaudiolib"]
 	path = jfaudiolib
-	url = ../jfaudiolib
+	url = https://github.com/MrHuu/jfaudiolib.git
 	branch = 3DS_blood
 [submodule "jfmact"]
 	path = jfmact
-	url = ../jfmact
+	url = https://github.com/MrHuu/jfmact.git
