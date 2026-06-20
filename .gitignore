@@ -14,3 +14,7 @@
 *.bnr
 *.3dsx
 *.cia
+
+dump/
+
+build/

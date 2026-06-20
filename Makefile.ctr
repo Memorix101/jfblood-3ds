@@ -83,7 +83,7 @@ SMACKERROOT = libsmacker
 ARCH	:=	-march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
 
 CFLAGS	:=	-g -Wall -O2 \
-			$(ARCH) -ffast-math -fno-optimize-sibling-calls
+			$(ARCH) -ffast-math -fno-optimize-sibling-calls -fpermissive
 
 CFLAGS	+=	$(INCLUDE) -DARM11 -D_3DS -D__3DS__ -D__AMIGA__ -DENGINE_19960925 \
             -DHAVE_VORBIS -DASS_REVERSESTEREO -DNETCODE_DISABLE -DSMACKER_DISABLE
@@ -373,9 +373,11 @@ endif
 ifeq ($(OS),Windows_NT)
 	MAKEROM		=	makerom.exe
 	BANNERTOOL	=	bannertool.exe
+	SMDHTOOL	=	smdhtool.exe
 else
 	MAKEROM		=	$(TOOLDIR)/makerom
 	BANNERTOOL	=	$(TOOLDIR)/bannertool
+	SMDHTOOL	=	$(TOOLDIR)/smdhtool
 endif
 
 #---------------------------------------------------------------------------------
@@ -398,8 +400,9 @@ $(OUTPUT).cia		:	$(OUTPUT).elf $(TARGET).bnr $(TARGET).smdh
 $(TARGET).bnr : $(BANNER_IMAGE_FILE) $(BANNER_AUDIO_FILE)
 	@$(BANNERTOOL) makebanner $(BANNER_IMAGE_ARG) $(BANNER_AUDIO_ARG) -o $(TARGET).bnr > /dev/null
 
+# Use smdhtool (ships with devkitPro) instead of the unavailable bannertool.
 $(TARGET).smdh : $(APP_ICON)
-	@$(BANNERTOOL) makesmdh -s "$(APP_TITLE)" -l "$(APP_DESCRIPTION)" -p "$(APP_AUTHOR)" -i $(APP_ICON) -o $(TARGET).smdh > /dev/null
+	@$(SMDHTOOL) --create "$(APP_TITLE)" "$(APP_DESCRIPTION)" "$(APP_AUTHOR)" $(APP_ICON) $(TARGET).smdh
 
 #---------------------------------------------------------------------------------
 # you need a rule like this for each extension you use as binary data

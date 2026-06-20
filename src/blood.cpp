@@ -90,7 +90,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #endif
 
 #ifdef __3DS__
+// libctru's act.h declares Result actInit(bool), which collides with Blood's
+// game function void actInit(bool). Blood never uses libctru's ACT service,
+// so rename the libctru symbol locally while pulling in the umbrella header.
+#define actInit ctru_actInit
 #include <3ds.h>
+#undef actInit
 #include "ctrlayer.h"
 #endif
 

@@ -42,7 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #endif
 
 #ifdef __3DS__
+// Avoid libctru actInit(bool) clashing with Blood's actInit(bool); see blood.cpp.
+#define actInit ctru_actInit
 #include <3ds.h>
+#undef actInit
 #endif
 
 CEndGameMgr::CEndGameMgr()
