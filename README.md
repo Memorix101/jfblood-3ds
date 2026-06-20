@@ -23,10 +23,6 @@ pacman -S --needed 3ds-libvorbisidec 3ds-libogg
 
 ### 2. Clone with submodules
 
-The engine and helper libraries live in git submodules
-(`jfbuild`, `jfaudiolib`, `jfmact`). They are pinned to the
-[`MrHuu/*`](https://github.com/MrHuu) repositories:
-
 ```sh
 git clone --recurse-submodules https://github.com/Memorix101/jfblood-3ds.git
 cd jfblood-3ds
@@ -78,13 +74,7 @@ sdmc:/
     └── NBlood/              <- create this folder; put the game data here
         ├── BLOOD.RFF
         ├── BLOOD.INI
-        ├── SOUNDS.RFF
-        ├── GUI.RFF
-        ├── SURFACE.DAT
-        ├── VOXEL.DAT
-        ├── TILES000.ART ...
-        ├── nblood.cfg          <- optional, see below
-        └── (Cryptic Passage: CPART07.AR_ / CPART15.AR_, CRYPTIC.INI, ...)
+        ├── ...
 ```
 
 - Copy the data files from your own copy of **Blood** (One Unit Whole Blood /
